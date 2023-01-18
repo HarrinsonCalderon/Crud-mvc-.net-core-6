@@ -1,0 +1,49 @@
+﻿@model List<crudMvcCore6.Models.ViewModels.BeerViewModel>
+
+@if (TempData["mensaje"] != null)
+    {
+        <div class="alert alert-success">
+        @TempData["mensaje"]
+        </div>
+        
+    }
+
+
+ 
+ 
+ 
+<h1>Cerveza</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Crear</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+         
+            <th>Marca</th>
+
+            <th>Operaciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var brend in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(m=>brend.NameBeer)
+                </td>
+                <td>
+                    @Html.DisplayFor(m=>brend.NameBrand)
+                </td>
+                <td>
+                    <a class="btn btn-primary" asp-controller="Beer" asp-action="Update" asp-route-id="@brend.Beerld">Editar</a>
+                    <a class="btn btn-danger"  asp-controller="Beer" asp-action="Delete" asp-route-id="@brend.Beerld">Eliminar</a>
+
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
